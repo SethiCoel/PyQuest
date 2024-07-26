@@ -385,33 +385,6 @@ class RPG:
             VALUES(1, 0, 1, 0, 1, 0, 1, 0)
         ''')
 
-        if conferir_dados_icones_mapa1 is None:
-            self.cursor.execute('''
-                INSERT INTO inventario (nome, tipo, dano, beneficio, equipado)
-                SELECT nome, tipo, dano, beneficio, equipado
-                FROM itens WHERE id = 6
-                ''')
-            
-            
-            self.cursor.execute('''
-                INSERT INTO inventario (nome, tipo, dano, beneficio, equipado)
-                SELECT nome, tipo, dano, beneficio, equipado
-                FROM itens WHERE id = 7
-                ''')
-            
-            self.cursor.execute('''
-                INSERT INTO inventario (nome, tipo, dano, beneficio, equipado)
-                SELECT nome, tipo, dano, beneficio, equipado
-                FROM itens WHERE id = 8
-                ''')
-            
-            self.cursor.execute('''
-                INSERT INTO inventario (nome, tipo, dano, beneficio, equipado)
-                SELECT nome, tipo, dano, beneficio, equipado
-                FROM itens WHERE id = 9
-                ''')    
-
-
 
         self.conn.commit()
 
@@ -1255,7 +1228,7 @@ EXP: {self.jogador_xp:.0f}/{self.jogador_xp_necessario:.0f} {' ' * int(self.vida
 
         escolha_aleatoria = choice([0, 1, 2, 2, 2, 2])
 
-        monstro_drop = choice([ 1, 1, 1])
+        monstro_drop = choice([ 0, 1, 1])
 
         RPG.titulo('VITÓRIA')
 
@@ -2028,27 +2001,27 @@ i = inventário'''
             self.interacao_mapa()
             self.dialogo_mapa1()
             
-            # if posicao_mob == spawnar_mob:
+            if posicao_mob == spawnar_mob:
 
-            #     if pos_x in {
-            #       44, 46, 48, 50, 52, 54, 86, 88,
-            #       90, 92, 94, 96, 128, 138, 132, 
-            #       134, 136, 138, 324, 326, 328, 
-            #       330, 332, 334, 318, 366, 368,
-            #       370, 372, 374, 376, 402, 408,
-            #       410, 412, 414, 416, 418,
-            #       148,108, 152, 150}: 
-            #        pass
+                if pos_x in {
+                  44, 46, 48, 50, 52, 54, 86, 88,
+                  90, 92, 94, 96, 128, 138, 132, 
+                  134, 136, 138, 324, 326, 328, 
+                  330, 332, 334, 318, 366, 368,
+                  370, 372, 374, 376, 402, 408,
+                  410, 412, 414, 416, 418,
+                  148,108, 152, 150}: 
+                   pass
                
-            #     else:
+                else:
 
-            #         #função para ocasionalmente não iniciar o combate de
-            #         if self.ignorar_posicao_atual == 0:
-            #             self.ignorar_posicao_atual = 1
-            #             pass
+                    #função para ocasionalmente não iniciar o combate de
+                    if self.ignorar_posicao_atual == 0:
+                        self.ignorar_posicao_atual = 1
+                        pass
                     
-            #         else:
-            #             self.combate()
+                    else:
+                        self.combate()
                 
 
             wasd = RPG.tecla_mover()
